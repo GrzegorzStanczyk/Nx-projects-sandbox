@@ -1,5 +1,5 @@
 {
-  "npmScope": "nx-projects-box",
+  "npmScope": "nx-projects-sandbox",
   "implicitDependencies": {
     "angular.json": "*",
     "package.json": "*",
