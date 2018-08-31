@@ -10,6 +10,12 @@
   "projects": {
     "components": {
       "tags": []
+    },
+    "components-dashboard": {
+      "tags": []
+    },
+    "components-dashboard-e2e": {
+      "tags": []
     }
   }
 }
