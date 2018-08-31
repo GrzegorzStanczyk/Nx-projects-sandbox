@@ -95,6 +95,7 @@
       {
         "allow": [],
         "depConstraints": [
+          { "sourceTag": "components", "onlyDependOnLibsWithTags": ["components"] }
           { "sourceTag": "*", "onlyDependOnLibsWithTags": ["*"] }
         ]
       }
