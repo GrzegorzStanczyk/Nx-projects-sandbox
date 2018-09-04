@@ -8,13 +8,14 @@ import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import {
   initialState as appInitialState,
-  appReducer
+  reducers
 } from './+state/app.reducer';
 import { AppEffects } from './+state/app.effects';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
-import { StoreRouterConnectingModule } from '@ngrx/router-store';
+import { StoreRouterConnectingModule, RouterStateSerializer } from '@ngrx/router-store';
 import { storeFreeze } from 'ngrx-store-freeze';
+import { CustomRouterStateSerializer } from 'libs/utils/src/lib/custom-router-serializer';
 
 @NgModule({
   declarations: [AppComponent],
@@ -23,17 +24,17 @@ import { storeFreeze } from 'ngrx-store-freeze';
     NxModule.forRoot(),
     RouterModule.forRoot([], { initialNavigation: 'enabled' }),
     StoreModule.forRoot(
-      { app: appReducer },
+      reducers,
       {
-        initialState: { app: appInitialState },
+        initialState: appInitialState,
         metaReducers: !environment.production ? [storeFreeze] : []
       }
     ),
     EffectsModule.forRoot([AppEffects]),
     !environment.production ? StoreDevtoolsModule.instrument() : [],
-    StoreRouterConnectingModule.forRoot({})
+    StoreRouterConnectingModule
   ],
-  providers: [],
+  providers: [{ provide: RouterStateSerializer, useClass: CustomRouterStateSerializer }],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

@@ -21,6 +21,9 @@
       ],
       "@nx-projects-sandbox/services": [
         "libs/services/src/index.ts"
+      ],
+      "@nx-projects-sandbox/utils": [
+        "libs/utils/src/index.ts"
       ]
     }
   },
