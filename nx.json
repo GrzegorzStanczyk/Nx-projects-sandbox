@@ -22,6 +22,9 @@
     },
     "router-ngrx-e2e": {
       "tags": []
+    },
+    "services": {
+      "tags": []
     }
   }
 }

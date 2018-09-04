@@ -18,6 +18,9 @@
     "paths": {
       "@nx-projects-sandbox/components": [
         "libs/components/src/index.ts"
+      ],
+      "@nx-projects-sandbox/services": [
+        "libs/services/src/index.ts"
       ]
     }
   },
