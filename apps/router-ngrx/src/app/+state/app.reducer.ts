@@ -1,7 +1,7 @@
 import { AppAction, AppActionTypes } from './app.actions';
 import { ActionReducerMap } from '@ngrx/store';
-import { RouterStateUrl } from 'libs/services/src/lib/custom-serializer.service';
 import { routerReducer, RouterReducerState } from '@ngrx/router-store';
+import { RouterStateUrl } from 'libs/utils/src/lib/custom-router-serializer';
 
 /**
  * Interface for the 'App' data used in
@@ -14,7 +14,7 @@ import { routerReducer, RouterReducerState } from '@ngrx/router-store';
 /* tslint:disable:no-empty-interface */
 
 export interface State {
-  routerReducer: RouterReducerState<RouterStateUrl>;
+  router: RouterReducerState<RouterStateUrl>;
   app: AppState;
 }
 
@@ -33,7 +33,7 @@ export const appInitialState: AppState = {
 };
 
 export const initialState: State = {
-  routerReducer: null,
+  router: null,
   app: appInitialState
 };
 
@@ -55,6 +55,6 @@ export function appReducer(
 }
 
 export const reducers: ActionReducerMap<State> = {
-  routerReducer: routerReducer,
+  router: routerReducer,
   app: appReducer
 };

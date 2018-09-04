@@ -1,8 +1,11 @@
 import { createFeatureSelector, createSelector } from '@ngrx/store';
 import { AppState } from './app.reducer';
+import { RouterStateUrl } from 'libs/utils/src/lib/custom-router-serializer';
+import { RouterReducerState } from '@ngrx/router-store';
 
 // Lookup the 'App' feature state managed by NgRx
 const getAppState = createFeatureSelector<AppState>('app');
+const getRouterState = createFeatureSelector<RouterReducerState<RouterStateUrl>>('router');
 
 const getLoaded = createSelector(
   getAppState,
@@ -32,3 +35,11 @@ export const appQuery = {
   getAllApp,
   getSelectedApp
 };
+
+export const getListAndRouter = createSelector(
+  getRouterState,
+  getLoaded,
+  (router, app) => {
+    return router.state.url && app;
+  }
+)

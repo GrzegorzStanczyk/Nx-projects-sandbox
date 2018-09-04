@@ -1,4 +1,7 @@
 import { Component } from '@angular/core';
+import { Store } from '@ngrx/store';
+import { State } from './+state/app.reducer';
+import { getListAndRouter } from 'apps/router-ngrx/src/app/+state/app.selectors';
 
 @Component({
   selector: 'nx-projects-sandbox-root',
@@ -7,4 +10,8 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'router-ngrx';
+
+  constructor(private state: Store<State>) {
+    this.state.select(getListAndRouter).subscribe(console.log)
+  }
 }
