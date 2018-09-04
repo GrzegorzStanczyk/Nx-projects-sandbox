@@ -16,6 +16,12 @@
     },
     "components-dashboard-e2e": {
       "tags": []
+    },
+    "router-ngrx": {
+      "tags": []
+    },
+    "router-ngrx-e2e": {
+      "tags": []
     }
   }
 }
