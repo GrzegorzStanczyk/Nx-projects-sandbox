@@ -18,13 +18,14 @@ import { storeFreeze } from 'ngrx-store-freeze';
 import { CustomRouterStateSerializer } from 'libs/utils/src/lib/custom-router-serializer';
 import { ComponentAComponent } from './components/component-a/component-a.component';
 import { ComponentBComponent } from './components/component-b/component-b.component';
+import { AppRoutingModule, routes } from './/app-routing.module';
 
 @NgModule({
   declarations: [AppComponent, ComponentAComponent, ComponentBComponent],
   imports: [
     BrowserModule,
     NxModule.forRoot(),
-    RouterModule.forRoot([], { initialNavigation: 'enabled' }),
+    RouterModule.forRoot(routes, { initialNavigation: 'enabled' }),
     StoreModule.forRoot(
       reducers,
       {
@@ -34,7 +35,8 @@ import { ComponentBComponent } from './components/component-b/component-b.compon
     ),
     EffectsModule.forRoot([AppEffects]),
     !environment.production ? StoreDevtoolsModule.instrument() : [],
-    StoreRouterConnectingModule
+    StoreRouterConnectingModule,
+    AppRoutingModule
   ],
   providers: [{ provide: RouterStateSerializer, useClass: CustomRouterStateSerializer }],
   bootstrap: [AppComponent]
