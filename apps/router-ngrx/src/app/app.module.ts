@@ -16,12 +16,10 @@ import { environment } from '../environments/environment';
 import { StoreRouterConnectingModule, RouterStateSerializer } from '@ngrx/router-store';
 import { storeFreeze } from 'ngrx-store-freeze';
 import { CustomRouterStateSerializer } from 'libs/utils/src/lib/custom-router-serializer';
-import { ComponentAComponent } from './components/component-a/component-a.component';
-import { ComponentBComponent } from './components/component-b/component-b.component';
 import { AppRoutingModule, routes } from './/app-routing.module';
 
 @NgModule({
-  declarations: [AppComponent, ComponentAComponent, ComponentBComponent],
+  declarations: [AppComponent ],
   imports: [
     BrowserModule,
     NxModule.forRoot(),
