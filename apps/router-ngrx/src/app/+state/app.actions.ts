@@ -23,8 +23,8 @@ export class AppLoaded implements Action {
 
 export type AppAction = LoadApp | AppLoaded | AppLoadError;
 
-export const fromAppActions = {
-  LoadApp,
-  AppLoaded,
-  AppLoadError
-};
+// export const fromAppActions = {
+//   LoadApp,
+//   AppLoaded,
+//   AppLoadError
+// };

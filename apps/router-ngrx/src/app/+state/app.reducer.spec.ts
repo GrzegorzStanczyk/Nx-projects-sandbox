@@ -1,5 +1,5 @@
 import { AppLoaded } from './app.actions';
-import { AppState, Entity, initialState, appReducer } from './app.reducer';
+import { AppState, Entity, initialState, appReducer, appInitialState } from './app.reducer';
 
 describe('App Reducer', () => {
   const getAppId = it => it['id'];
@@ -16,7 +16,7 @@ describe('App Reducer', () => {
     it('should return set the list of known App', () => {
       const apps = [createApp('PRODUCT-AAA'), createApp('PRODUCT-zzz')];
       const action = new AppLoaded(apps);
-      const result: AppState = appReducer(initialState, action);
+      const result: AppState = appReducer(appInitialState, action);
       const selId: string = getAppId(result.list[1]);
 
       expect(result.loaded).toBe(true);
@@ -28,9 +28,9 @@ describe('App Reducer', () => {
   describe('unknown action', () => {
     it('should return the initial state', () => {
       const action = {} as any;
-      const result = appReducer(initialState, action);
+      const result = appReducer(appInitialState, action);
 
-      expect(result).toBe(initialState);
+      expect(result).toBe(appInitialState);
     });
   });
 });

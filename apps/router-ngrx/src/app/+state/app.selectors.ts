@@ -40,6 +40,8 @@ export const getListAndRouter = createSelector(
   getRouterState,
   getLoaded,
   (router, app) => {
+    console.log('router.state.url: ', router);
+    console.log('app: ', app);
     return router.state.url && app;
   }
 )
