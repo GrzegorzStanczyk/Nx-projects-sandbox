@@ -1,0 +1,5 @@
+<nx-projects-sandbox-shape *ngFor="let shape of shapes" [shape]="shape" class="shape">
+</nx-projects-sandbox-shape>
+<button (click)="changeData()">Change data</button>
+<button (click)="changeData2()">Change data</button>
+{{shapes | json}}

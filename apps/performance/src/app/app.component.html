@@ -1,0 +1,10 @@
+<svg
+  width="1000" height="1000"
+  (mousedown)="mouseDown($event)"
+  (mouseup)="mouseUp($event)"
+  (mousemove)="mouseMove($event)">
+
+  <svg:g box *ngFor="let box of boxes" [box]="box">
+  </svg:g>
+
+</svg>

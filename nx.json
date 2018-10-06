@@ -34,6 +34,24 @@
     },
     "svg-e2e": {
       "tags": []
+    },
+    "change-detection": {
+      "tags": []
+    },
+    "change-detection-e2e": {
+      "tags": []
+    },
+    "performance": {
+      "tags": []
+    },
+    "performance-e2e": {
+      "tags": []
+    },
+    "performance-zone": {
+      "tags": []
+    },
+    "performance-zone-e2e": {
+      "tags": []
     }
   }
 }

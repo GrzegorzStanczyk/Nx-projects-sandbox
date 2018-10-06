@@ -1,0 +1,17 @@
+:host {
+  display: block;
+}
+.shapes {
+  border: 2px solid red;
+  margin: 20px;
+}
+
+.shape {
+  border: 2px solid blue;
+  margin: 10px;
+}
+
+.coord {
+  border:  1 dashed green;
+  margin: 5px;
+}
