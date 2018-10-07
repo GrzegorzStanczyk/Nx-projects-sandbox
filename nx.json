@@ -52,6 +52,12 @@
     },
     "performance-zone-e2e": {
       "tags": []
+    },
+    "dad-directive": {
+      "tags": []
+    },
+    "dad-directive-e2e": {
+      "tags": []
     }
   }
 }

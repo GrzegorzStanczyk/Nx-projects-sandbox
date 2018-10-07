@@ -49,11 +49,11 @@ export class AppComponent implements AfterViewInit, OnDestroy {
     )
 
     mousedown$.pipe(takeUntil(this.destroy$)).subscribe(() => this.translateCoordsTemp = this.translateCoords)
-    mousedown$.pipe(takeUntil(this.destroy$)).subscribe((data) => {
-      console.log('data: ', data);
-      console.log('getMousePosition: ', this.getMousePosition(data));
-      console.log('getPlanPosition: ', this.getPlanPosition(data));
-    })
+    // mousedown$.pipe(takeUntil(this.destroy$)).subscribe((data) => {
+    //   console.log('data: ', data);
+    //   console.log('getMousePosition: ', this.getMousePosition(data));
+    //   console.log('getPlanPosition: ', this.getPlanPosition(data));
+    // })
 
     action$.pipe(takeUntil(this.destroy$)).subscribe(({down, move}) => {
 
@@ -67,9 +67,17 @@ export class AppComponent implements AfterViewInit, OnDestroy {
         // x: movePoint.x - (downPoint.x - this.translateCoordsTemp.x),
         // y: movePoint.y - (downPoint.y - this.translateCoordsTemp.y)
       }
-      console.log('this.scale * movePoint.x - (this.scale * downPoint.x - (svgPoint.x - this.scale * downPoint.x)),: ', this.scale * movePoint.x - (this.scale * downPoint.x - (svgPoint.x - this.scale * downPoint.x)),);
-      console.log('movePoint.x - (downPoint.x - this.translateCoordsTemp.x): ', movePoint.x - (downPoint.x - this.translateCoordsTemp.x));
+      // console.log('this.scale * movePoint.x - (this.scale * downPoint.x - (svgPoint.x - this.scale * downPoint.x)),: ', this.scale * movePoint.x - (this.scale * downPoint.x - (svgPoint.x - this.scale * downPoint.x)),);
+      // console.log('movePoint.x - (downPoint.x - this.translateCoordsTemp.x): ', movePoint.x - (downPoint.x - this.translateCoordsTemp.x));
       // this.translate = `translate(${this.translateCoords.x},${this.translateCoords.y})`
+
+      // var matrix = this.svg.nativeElement.createSVGMatrix();
+      // console.log('matrix: ', matrix);
+      // matrix.e = movePoint.x - (downPoint.x - this.translateCoordsTemp.x);
+      // matrix.f = movePoint.y - (downPoint.y - this.translateCoordsTemp.y);
+      // this.plan.nativeElement.transform.baseVal.getItem(0).setMatrix(matrix);
+
+      this.plan.nativeElement.transform.baseVal.getItem(0).setTranslate(movePoint.x - (downPoint.x - this.translateCoordsTemp.x),movePoint.y - (downPoint.y - this.translateCoordsTemp.y))
     });
   }
 

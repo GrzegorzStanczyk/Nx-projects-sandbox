@@ -800,6 +800,125 @@
           }
         }
       }
+    },
+    "dad-directive": {
+      "root": "apps/dad-directive/",
+      "sourceRoot": "apps/dad-directive/src",
+      "projectType": "application",
+      "prefix": "nx-projects-sandbox",
+      "schematics": {},
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/apps/dad-directive",
+            "index": "apps/dad-directive/src/index.html",
+            "main": "apps/dad-directive/src/main.ts",
+            "polyfills": "apps/dad-directive/src/polyfills.ts",
+            "tsConfig": "apps/dad-directive/tsconfig.app.json",
+            "assets": [
+              "apps/dad-directive/src/favicon.ico",
+              "apps/dad-directive/src/assets"
+            ],
+            "styles": [
+              "apps/dad-directive/src/styles.css"
+            ],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "apps/dad-directive/src/environments/environment.ts",
+                  "with": "apps/dad-directive/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "aot": true,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "dad-directive:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "dad-directive:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "dad-directive:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "apps/dad-directive/src/test.ts",
+            "polyfills": "apps/dad-directive/src/polyfills.ts",
+            "tsConfig": "apps/dad-directive/tsconfig.spec.json",
+            "karmaConfig": "apps/dad-directive/karma.conf.js",
+            "styles": [
+              "apps/dad-directive/src/styles.css"
+            ],
+            "scripts": [],
+            "assets": [
+              "apps/dad-directive/src/favicon.ico",
+              "apps/dad-directive/src/assets"
+            ]
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "apps/dad-directive/tsconfig.app.json",
+              "apps/dad-directive/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "dad-directive-e2e": {
+      "root": "apps/dad-directive-e2e/",
+      "projectType": "application",
+      "architect": {
+        "e2e": {
+          "builder": "@angular-devkit/build-angular:protractor",
+          "options": {
+            "protractorConfig": "apps/dad-directive-e2e/protractor.conf.js",
+            "devServerTarget": "dad-directive:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "dad-directive:serve:production"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": "apps/dad-directive-e2e/tsconfig.e2e.json",
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
     }
   },
   "cli": {
