@@ -62,10 +62,10 @@ export class AppComponent implements AfterViewInit, OnDestroy {
       const svgPoint = this.getMousePosition(move);
 
       this.translateCoords = {
-        x: this.scale * movePoint.x - (this.scale * downPoint.x - (svgPoint.x - this.scale * downPoint.x)),
-        y: this.scale * movePoint.y - (this.scale * downPoint.y - this.translateCoordsTemp.y)
-        // x: movePoint.x - (downPoint.x - this.translateCoordsTemp.x),
-        // y: movePoint.y - (downPoint.y - this.translateCoordsTemp.y)
+        // x: this.scale * movePoint.x - (this.scale * downPoint.x - (svgPoint.x - this.scale * downPoint.x)),
+        // y: this.scale * movePoint.y - (this.scale * downPoint.y - this.translateCoordsTemp.y)
+        x: movePoint.x - (downPoint.x - this.translateCoordsTemp.x),
+        y: movePoint.y - (downPoint.y - this.translateCoordsTemp.y)
       }
       // console.log('this.scale * movePoint.x - (this.scale * downPoint.x - (svgPoint.x - this.scale * downPoint.x)),: ', this.scale * movePoint.x - (this.scale * downPoint.x - (svgPoint.x - this.scale * downPoint.x)),);
       // console.log('movePoint.x - (downPoint.x - this.translateCoordsTemp.x): ', movePoint.x - (downPoint.x - this.translateCoordsTemp.x));
