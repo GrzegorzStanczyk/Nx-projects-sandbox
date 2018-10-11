@@ -24,7 +24,7 @@ export class AppComponent implements OnInit, AfterViewInit {
   constructor(private cdr: ChangeDetectorRef) {}
 
   ngOnInit() {
-    for (let i = 0; i < 100000; i++) {
+    for (let i = 0; i < 10000; i++) {
       const id = i;
       const x = getRandomInt(0, 1000);
       const y = getRandomInt(0, 1000);
