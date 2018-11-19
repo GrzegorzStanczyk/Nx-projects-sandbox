@@ -919,6 +919,125 @@
           }
         }
       }
+    },
+    "timer-performance": {
+      "root": "apps/timer-performance/",
+      "sourceRoot": "apps/timer-performance/src",
+      "projectType": "application",
+      "prefix": "nx-projects-sandbox",
+      "schematics": {},
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/apps/timer-performance",
+            "index": "apps/timer-performance/src/index.html",
+            "main": "apps/timer-performance/src/main.ts",
+            "polyfills": "apps/timer-performance/src/polyfills.ts",
+            "tsConfig": "apps/timer-performance/tsconfig.app.json",
+            "assets": [
+              "apps/timer-performance/src/favicon.ico",
+              "apps/timer-performance/src/assets"
+            ],
+            "styles": [
+              "apps/timer-performance/src/styles.css"
+            ],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "apps/timer-performance/src/environments/environment.ts",
+                  "with": "apps/timer-performance/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "aot": true,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "timer-performance:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "timer-performance:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "timer-performance:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "apps/timer-performance/src/test.ts",
+            "polyfills": "apps/timer-performance/src/polyfills.ts",
+            "tsConfig": "apps/timer-performance/tsconfig.spec.json",
+            "karmaConfig": "apps/timer-performance/karma.conf.js",
+            "styles": [
+              "apps/timer-performance/src/styles.css"
+            ],
+            "scripts": [],
+            "assets": [
+              "apps/timer-performance/src/favicon.ico",
+              "apps/timer-performance/src/assets"
+            ]
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "apps/timer-performance/tsconfig.app.json",
+              "apps/timer-performance/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "timer-performance-e2e": {
+      "root": "apps/timer-performance-e2e/",
+      "projectType": "application",
+      "architect": {
+        "e2e": {
+          "builder": "@angular-devkit/build-angular:protractor",
+          "options": {
+            "protractorConfig": "apps/timer-performance-e2e/protractor.conf.js",
+            "devServerTarget": "timer-performance:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "timer-performance:serve:production"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": "apps/timer-performance-e2e/tsconfig.e2e.json",
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
     }
   },
   "cli": {

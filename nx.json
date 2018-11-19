@@ -58,6 +58,12 @@
     },
     "dad-directive-e2e": {
       "tags": []
+    },
+    "timer-performance": {
+      "tags": []
+    },
+    "timer-performance-e2e": {
+      "tags": []
     }
   }
 }

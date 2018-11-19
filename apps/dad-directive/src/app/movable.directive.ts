@@ -33,11 +33,12 @@ export class MovableDirective extends DraggableDirective implements AfterViewIni
 
   ngAfterViewInit() {
     this.root = document.querySelector('svg');
+    const group = document.querySelector('.group');
     const transforms= this.element.nativeElement.transform.baseVal;
     if (transforms.length === 0 ||
         transforms.getItem(0).type !== SVGTransform.SVG_TRANSFORM_TRANSLATE) {
       const translate = this.root.createSVGTransform();
-      this.matrix = this.root.createSVGMatrix();
+      // this.matrix = this.root.createSVGMatrix();
       // this.matrix.a = this.scale;
       // this.matrix.d = this.scale;
       // translate.setMatrix(this.matrix)
@@ -56,20 +57,30 @@ export class MovableDirective extends DraggableDirective implements AfterViewIni
 
   @HostListener('dragMove', ['$event'])
   onDragMove(event: PointerEvent) {
-    this.zone.runOutsideAngular(() => {
+    // this.zone.runOutsideAngular(() => {
+
+      const scvMouse = getMousePosition(this.root, this.root, event)
+      const elemMouse = getMousePosition(this.root, this.element, event)
+      console.log('scvMouse: ', scvMouse);
+      console.log('elemMouse: ', elemMouse);
+      console.log('this.startPosition.x: ', this.startPosition.x);
+
+      scvMouse.x * this.startPosition.x / elemMouse.x
+      console.log('scvMouse.x * this.startPosition.x / elemMouse.x: ', scvMouse.x * this.startPosition.x / elemMouse.x);
+      // scvMouse.y * this.startPosition.y / elemMouse.y
       this.element.nativeElement.transform.baseVal
       .getItem(0)
       .setTranslate(
         (event.clientX - this.startPosition.x) / this.scale,
         (event.clientY - this.startPosition.y) / this.scale
-      )
-
+        )
+        console.log('(event.clientX - this.startPosition.x) / this.scale: ', (event.clientX - this.startPosition.x) / this.scale);
       // this.matrix.e = event.clientX - this.startPosition.x;
       // this.matrix.f = event.clientY - this.startPosition.y;
       // this.element.nativeElement.transform.baseVal
       // .getItem(0)
       // .setMatrix(this.matrix)
-    })
+    // })
   }
 
   @HostListener('dragEnd', ['$event'])

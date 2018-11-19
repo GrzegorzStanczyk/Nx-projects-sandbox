@@ -14,8 +14,8 @@ import { ShapeComponent } from '../shape/shape.component';
 @Component({
   selector: 'nx-projects-sandbox-coord',
   templateUrl: './coord.component.html',
-  styleUrls: ['./coord.component.css']
-  // changeDetection: ChangeDetectionStrategy.OnPush
+  styleUrls: ['./coord.component.css'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class CoordComponent implements OnInit, OnChanges {
   @Input() coord;
@@ -33,7 +33,7 @@ export class CoordComponent implements OnInit, OnChanges {
     this.fireEvent();
   }
   ngAfterViewInit() {
-    this.changeDetector.detach();
+    // this.changeDetector.detach();
   }
 
   fireEvent() {

@@ -66,10 +66,10 @@ export class AppComponent {
       })
 
       mouseup$.subscribe((event: MouseEvent) => {
-        this.zone.run(() => {
+        // this.zone.run(() => {
           this.updateBox(this.currentId, event.clientX + this.offsetX, event.clientY + this.offsetY)
-          this.currentId  = null;
-        })
+          // this.currentId  = null;
+        // })
       })
       // mousemove$.pipe(switchMapTo(mouseup$)).subscribe((event: MouseEvent) => {
       //   this.zone.run(() => {
